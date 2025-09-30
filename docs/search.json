@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Welcome to My Data Science Portfolio",
+    "title": "",
     "section": "",
-    "text": "Welcome to my data science portfolio! This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.\n\n\nThis portfolio shows my work learning data science. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\nProgramming: Python, Pandas for data analysis\nVisualization: Creating charts with Matplotlib and Seaborn\nData Collection: Getting data from files, websites, and APIs\nAnalysis: Finding patterns and answering questions with data\n\n\n\n\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+    "text": "Code"
   },
   {
     "objectID": "index.html#about-this-portfolio",
@@ -192,6 +192,76 @@
   {
     "objectID": "gdp_blog.html#sources",
     "href": "gdp_blog.html#sources",
+    "title": "",
+    "section": "Sources",
+    "text": "Sources\n\nWorld Bank GDP Data: https://data.worldbank.org/indicator/NY.GDP.MKTP.KD"
+  },
+  {
+    "objectID": "gdp_blog.html#call-to-action",
+    "href": "gdp_blog.html#call-to-action",
+    "title": "",
+    "section": "Call to Action",
+    "text": "Call to Action\nTry running the code yourself with different countries in the dataset. Experiment with different styles of plots. Additionally, try to plot multiple countries on the same graph to compare their GDP growth trends side by side. This will help you understand how different economies perform relative to each other over time. You can also practice wrangling by combining countries to look at growth throughout different regions or continents."
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "",
+    "section": "Introduction",
+    "text": "Introduction\nGross Domestic Product (GDP) is one of the most important indicators in macroeconomics. Economists, analysts, politicians, and businesses all rely on GDP trends to understand the health of an economy. But raw GDP values aren’t always easy to interpret, visualization helps reveal trends and patterns that are hard to observe by just looking at the data.\nLearning how to import, clean, and plot data in Python using pandas and matplotlib can help you in many areas of study, but today we will be focusing on GDP data. By the end, you’ll be able to create your own clear and professional plots for any dataset.\nThe tools and techniques shown here can be applied to other datasets as well, so feel free to adapt the code for your own projects. pandas and matplotlib are versatile libraries that can handle a wide range of data wrangling and visualization tasks."
+  },
+  {
+    "objectID": "index.html#step-1-importing-and-loading-the-data",
+    "href": "index.html#step-1-importing-and-loading-the-data",
+    "title": "",
+    "section": "Step 1: Importing and Loading the Data",
+    "text": "Step 1: Importing and Loading the Data\nWe’ll use Python’s standard data tools: pandas for wrangling and matplotlib for visualization. For this example we will use a CSV file called gdp_data.csv from the World Bank or IMF. This file contains GDP data for multiple countries over several decades. You may have to use different functions to load data from other formats like Excel or JSON.\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load dataset\ndf = pd.read_csv(\"gdp_data.csv\")\n\n# Preview of the data\nprint(df.head())"
+  },
+  {
+    "objectID": "index.html#step-2-select-relevant-columns",
+    "href": "index.html#step-2-select-relevant-columns",
+    "title": "",
+    "section": "Step 2: Select Relevant Columns",
+    "text": "Step 2: Select Relevant Columns\nLarge macroeconomic datasets often contain many indicators. For this example we just need:\n\nYear (time variable)\n\nGDP (constant USD)\n\nIn this model, only one country will be analyzed at a time. For this example, we’ll use the United States. Feel free to change the country to any other available in the dataset if you follow along with the code yourself.\n# Pick a country\ncountry = \"United States\"\n\n# Filter for that country\ngdp_row = df[df[\"Country Name\"] == country]"
+  },
+  {
+    "objectID": "index.html#step-3-wrangle-the-data",
+    "href": "index.html#step-3-wrangle-the-data",
+    "title": "",
+    "section": "Step 3: Wrangle the Data",
+    "text": "Step 3: Wrangle the Data\nMake sure your data is numeric and sorted by year. In this dataset, years are columns, so we need to reshape the data. We want each observation to have its own row, not column, so we need to transform the data to be more easily read and plotted. We also need to make sure the years are saves as integers and not strings. We use the “coerce” method to handle any invalid data types and deal with any missing values or parsing errors that may arise.\n# Reshape data: years as rows, GDP as values\ngdp = gdp_row.loc[:, \"1960\":\"2024\"].T.reset_index()\ngdp.columns = [\"Year\", \"GDP\"]\n\n# Convert Year to int and GDP to numeric\ngdp[\"Year\"] = gdp[\"Year\"].astype(int)\ngdp[\"GDP\"] = pd.to_numeric(gdp[\"GDP\"], errors=\"coerce\")\nAt this stage, we’re ready to calculate GDP growth rates:\n\n[ = ]\nThe growth given is the percentage change from one year to the next. We can use the pct_change() function in pandas to calculate this easily.\ngdp[\"GrowthRate\"] = gdp[\"GDP\"].pct_change() * 100"
+  },
+  {
+    "objectID": "index.html#step-4-visualize-trends",
+    "href": "index.html#step-4-visualize-trends",
+    "title": "",
+    "section": "Step 4: Visualize Trends",
+    "text": "Step 4: Visualize Trends\nWe’ll create two plots:\n1. Raw GDP over time\n2. GDP growth rate (percentage)\nThere are a few things to keep in mind when plotting, such as labeling axes, adding titles, and using legends. Adjust the scale and add colors to make the plots more readable. In a scatterplot, it could be worth excluding some of the outliers (ie: false data points) from the graph to preserve the automatic scaling of the axes.\n#GDP over time graph\nplt.figure(figsize=(10, 5))\nplt.plot(gdp[\"Year\"], gdp[\"GDP\"], color=\"blue\", label=\"GDP\")\nplt.title(f\"GDP of {country} Over Time\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"GDP (in Tens of Trillions US$)\")\nplt.legend()\nplt.show()\n\n#Plot growth in percentage\nplt.figure(figsize=(10, 5))\nplt.plot(gdp[\"Year\"], gdp[\"GrowthRate\"], color=\"green\", label=\"Growth Rate\")\nplt.axhline(0, color=\"black\", linestyle=\"--\", linewidth=0.8)\nplt.title(f\"GDP Growth Rate of {country}\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Growth Rate (%)\")\nplt.legend()\nplt.show()"
+  },
+  {
+    "objectID": "index.html#step-5-interpret-results",
+    "href": "index.html#step-5-interpret-results",
+    "title": "",
+    "section": "Step 5: Interpret Results",
+    "text": "Step 5: Interpret Results\nThe plots provide two complementary insights:\n\nGDP trend: Long-term trajectory of economic size. Can be compared across countries for examining total economic output.\nGrowth rate trend: Year-to-year fluctuations, helpful for spotting recessions or booms. Can be compared across countries to see which economies are expanding faster.\n\nFrom the graphs, we can see that the U.S. economy has generally grown consistently over time, with some periods of slower growth or contraction (notably around 2008 and 2020). The growth rate graph highlights these fluctuations more clearly. Fluctuations can point the analyst to investigate further into economic events during those periods. In 2008 there was a major financial crisis, and in 2020 the COVID-19 pandemic caused a significant economic downturn, these events are reflected in the GDP growth rates and overall GDP.\nHere’s a simple comparison table:\n\n\n\nYear\nGDP (USD)\nGrowth Rate (%)\n\n\n\n\n2018\n20,580,000,000,000\n4.9\n\n\n2019\n21,430,000,000,000\n3.3\n\n\n2020\n20,930,000,000,000\n-0.8\n\n\n2021\n22,990,000,000,000\n10.4\n\n\n\nTable: Example U.S. GDP values (World Bank, constant USD)"
+  },
+  {
+    "objectID": "index.html#conclusion",
+    "href": "index.html#conclusion",
+    "title": "",
+    "section": "Conclusion",
+    "text": "Conclusion\nVisualizing GDP makes abstract numbers and trends more tangible. Combining simple wrangling with clear plotting, you can track trends, identify shocks, and compare economies. The same data wrangling and visualization techniques can be applied to other projects and datasets according to the needs of your analysis."
+  },
+  {
+    "objectID": "index.html#call-to-action",
+    "href": "index.html#call-to-action",
+    "title": "",
+    "section": "Call to Action",
+    "text": "Call to Action\nTry running the code yourself with different countries in the dataset. Experiment with different styles of plots. Additionally, try to plot multiple countries on the same graph to compare their GDP growth trends side by side. This will help you understand how different economies perform relative to each other over time. You can also practice wrangling by combining countries to look at growth throughout different regions or continents."
+  },
+  {
+    "objectID": "index.html#sources",
+    "href": "index.html#sources",
     "title": "",
     "section": "Sources",
     "text": "Sources\n\nWorld Bank GDP Data: https://data.worldbank.org/indicator/NY.GDP.MKTP.KD"
