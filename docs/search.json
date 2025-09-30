@@ -1,0 +1,199 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to My Data Science Portfolio",
+    "section": "",
+    "text": "Welcome to my data science portfolio! This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.\n\n\nThis portfolio shows my work learning data science. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\nProgramming: Python, Pandas for data analysis\nVisualization: Creating charts with Matplotlib and Seaborn\nData Collection: Getting data from files, websites, and APIs\nAnalysis: Finding patterns and answering questions with data\n\n\n\n\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+  },
+  {
+    "objectID": "index.html#about-this-portfolio",
+    "href": "index.html#about-this-portfolio",
+    "title": "Welcome to My Data Science Portfolio",
+    "section": "",
+    "text": "This portfolio shows my work learning data science. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages."
+  },
+  {
+    "objectID": "index.html#skills-im-learning",
+    "href": "index.html#skills-im-learning",
+    "title": "Welcome to My Data Science Portfolio",
+    "section": "",
+    "text": "Programming: Python, Pandas for data analysis\nVisualization: Creating charts with Matplotlib and Seaborn\nData Collection: Getting data from files, websites, and APIs\nAnalysis: Finding patterns and answering questions with data"
+  },
+  {
+    "objectID": "index.html#my-projects",
+    "href": "index.html#my-projects",
+    "title": "Welcome to My Data Science Portfolio",
+    "section": "",
+    "text": "Learn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projects Overview",
+    "section": "",
+    "text": "Description: Pick a dataset and explore it to discover insights and answer questions.\n\n\n\nDescription: Find an interesting data source, collect the data, and prepare it for analysis.\n\n\n\nDescription: A comprehensive project that shows off my data science skills.",
+    "crumbs": [
+      "Projects Overview"
+    ]
+  },
+  {
+    "objectID": "projects/index.html#all-projects",
+    "href": "projects/index.html#all-projects",
+    "title": "Projects Overview",
+    "section": "",
+    "text": "Description: Pick a dataset and explore it to discover insights and answer questions.\n\n\n\nDescription: Find an interesting data source, collect the data, and prepare it for analysis.\n\n\n\nDescription: A comprehensive project that shows off my data science skills.",
+    "crumbs": [
+      "Projects Overview"
+    ]
+  },
+  {
+    "objectID": "projects/eda.html",
+    "href": "projects/eda.html",
+    "title": "EDA Project",
+    "section": "",
+    "text": "This is coming down the pipeline. Check again later.",
+    "crumbs": [
+      "EDA Project"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "My name is Michael Stutzman, I am a Statistics major at Brigham Young University pursuing a minor in economics. I am interested in learning about applications of statistics in solving real problems."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About Me",
+    "section": "",
+    "text": "My name is Michael Stutzman, I am a Statistics major at Brigham Young University pursuing a minor in economics. I am interested in learning about applications of statistics in solving real problems."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About Me",
+    "section": "Education",
+    "text": "Education\n\n[Bachelors of Science] - [Brigham Young University], [2027]\nRelevant Coursework: Statistics, Data Analysis, Programming, etc."
+  },
+  {
+    "objectID": "about.html#skills-interests",
+    "href": "about.html#skills-interests",
+    "title": "About Me",
+    "section": "Skills & Interests",
+    "text": "Skills & Interests\n\nTechnical Skills\n\nProgramming: Python, R, Linux\nData Analysis: Pandas, NumPy\nVisualization: Tableau,\nTools: Git/GitHub\n\n\n\nAreas of Interest\n\nSports analytics, micro economics, travel, sustainable energy solutions.\n[Other areas you’re curious about]"
+  },
+  {
+    "objectID": "about.html#goals",
+    "href": "about.html#goals",
+    "title": "About Me",
+    "section": "Goals",
+    "text": "Goals\nDescribe what you hope to achieve through your data science journey:\n\nShort-term learning objectives\nLong-term career aspirations\nTypes of problems you want to solve"
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About Me",
+    "section": "Contact",
+    "text": "Contact\n\nEmail: stutzmanmichael90@gmail.com\nGitHub: https://github.com/stutzmanmichael\nLinkedIn: https://www.linkedin.com/in/stutzmanmichael/\n\n\nThis portfolio showcases my learning progress and projects completed during my data science studies."
+  },
+  {
+    "objectID": "projects/data-acquisition.html",
+    "href": "projects/data-acquisition.html",
+    "title": "Data Acquisition Project",
+    "section": "",
+    "text": "This is coming down the pipeline. Check again later.",
+    "crumbs": [
+      "Data Acquisition Project"
+    ]
+  },
+  {
+    "objectID": "projects/final-project.html",
+    "href": "projects/final-project.html",
+    "title": "Final Project",
+    "section": "",
+    "text": "This is coming down the pipeline. Check again later.",
+    "crumbs": [
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "gdp_blog.html",
+    "href": "gdp_blog.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "gdp_blog.html#introduction",
+    "href": "gdp_blog.html#introduction",
+    "title": "",
+    "section": "Introduction",
+    "text": "Introduction\nGross Domestic Product (GDP) is one of the most important indicators in macroeconomics. Economists, analysts, politicians, and businesses all rely on GDP trends to understand the health of an economy. But raw GDP values aren’t always easy to interpret, visualization helps reveal trends and patterns that are hard to pbserve by just looking at the data.\nLearning how to import, clean, and plot data in Python using pandas and matplotlib can help you in many areas of study, but today we will be focusing on GDP data. By the end, you’ll be able to create your own clear and professional plots for any dataset."
+  },
+  {
+    "objectID": "gdp_blog.html#step-1-import-and-load-the-data",
+    "href": "gdp_blog.html#step-1-import-and-load-the-data",
+    "title": "",
+    "section": "Step 1: Import and Load the Data",
+    "text": "Step 1: Import and Load the Data\nWe’ll use Python’s standard data stack: pandas for wrangling and matplotlib for visualization. Suppose you’ve downloaded a CSV file called gdp_data.csv from the World Bank or IMF.\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load the dataset\ndf = pd.read_csv(\"gdp_data.csv\")\n\n# Preview of the data\nprint(df.head())"
+  },
+  {
+    "objectID": "gdp_blog.html#step-2-select-relevant-columns",
+    "href": "gdp_blog.html#step-2-select-relevant-columns",
+    "title": "",
+    "section": "Step 2: Select Relevant Columns",
+    "text": "Step 2: Select Relevant Columns\nLarge macroeconomic datasets often contain many indicators. For this example we just need:\n\nYear (time variable)\n\nGDP (constant USD)\n\nIn this model, only one country will be analyzed at a time. For this example, we’ll use the United States. Feel free to change the country to any other available in the dataset.\n# Pick a country\ncountry = \"United States\"\n\n# Filter for that country\ngdp_row = df[df[\"Country Name\"] == country]"
+  },
+  {
+    "objectID": "gdp_blog.html#step-3-wrangle-the-data",
+    "href": "gdp_blog.html#step-3-wrangle-the-data",
+    "title": "",
+    "section": "Step 3: Wrangle the Data",
+    "text": "Step 3: Wrangle the Data\nMake sure your data is numeric and sorted by year. In this dataset, years are columns, so we need to reshape the data. We also need to make sure the years are saves as integers and not strings. We use the “coerce” method to handle any invalid data types and deal with any missing values or parsing errors that may arise.\n# Reshape data: years as rows, GDP as values\ngdp = gdp_row.loc[:, \"1960\":\"2024\"].T.reset_index()\ngdp.columns = [\"Year\", \"GDP\"]\n\n# Convert Year to int and GDP to numeric\ngdp[\"Year\"] = gdp[\"Year\"].astype(int)\ngdp[\"GDP\"] = pd.to_numeric(gdp[\"GDP\"], errors=\"coerce\")\nAt this stage, we’re ready to calculate GDP growth rates:\n[ = ]\ngdp[\"GrowthRate\"] = gdp[\"GDP\"].pct_change() * 100"
+  },
+  {
+    "objectID": "gdp_blog.html#step-4-visualize-trends",
+    "href": "gdp_blog.html#step-4-visualize-trends",
+    "title": "",
+    "section": "Step 4: Visualize Trends",
+    "text": "Step 4: Visualize Trends\nWe’ll create two plots:\n1. Raw GDP over time\n2. GDP growth rate (percentage)\n#GDP over time graph\nplt.figure(figsize=(10, 5))\nplt.plot(gdp[\"Year\"], gdp[\"GDP\"], color=\"blue\", label=\"GDP\")\nplt.title(f\"GDP of {country} Over Time\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"GDP (in Tens of Trillions US$)\")\nplt.legend()\nplt.show()\n\n#Plot growth in percentage\nplt.figure(figsize=(10, 5))\nplt.plot(gdp[\"Year\"], gdp[\"GrowthRate\"], color=\"green\", label=\"Growth Rate\")\nplt.axhline(0, color=\"black\", linestyle=\"--\", linewidth=0.8)\nplt.title(f\"GDP Growth Rate of {country}\")\nplt.xlabel(\"Year\")\nplt.ylabel(\"Growth Rate (%)\")\nplt.legend()\nplt.show()"
+  },
+  {
+    "objectID": "gdp_blog.html#step-5-interpret-results",
+    "href": "gdp_blog.html#step-5-interpret-results",
+    "title": "",
+    "section": "Step 5: Interpret Results",
+    "text": "Step 5: Interpret Results\nThe plots provide two complementary insights:\n\nGDP trend: Long-term trajectory of economic size. Can be compared across countries for examining total economic output.\nGrowth rate trend: Year-to-year fluctuations, helpful for spotting recessions or booms. Can be compared across countries to see which economies are expanding faster.\n\nHere’s a simple comparison table:\n\n\n\nYear\nGDP (USD)\nGrowth Rate (%)\n\n\n\n\n2018\n20,580,000,000,000\n2.9\n\n\n2019\n21,430,000,000,000\n2.3\n\n\n2020\n20,930,000,000,000\n-2.3\n\n\n2021\n22,990,000,000,000\n9.9\n\n\n\nTable: Example U.S. GDP values (World Bank, constant USD)"
+  },
+  {
+    "objectID": "gdp_blog.html#conclusion-call-to-action",
+    "href": "gdp_blog.html#conclusion-call-to-action",
+    "title": "",
+    "section": "Conclusion & Call to Action",
+    "text": "Conclusion & Call to Action\nVisualizing GDP makes abstract numbers tangible. By combining simple wrangling with clear plotting, you can track trends, identify shocks, and compare economies.\n✅ Next step for you: Download GDP data for two countries of your choice and recreate these plots side by side. For reference, see the World Bank GDP dataset.\nIf you want to go further, try adding inflation or unemployment data for a richer macroeconomic dashboard."
+  },
+  {
+    "objectID": "gdp_blog.html#conclusion",
+    "href": "gdp_blog.html#conclusion",
+    "title": "",
+    "section": "Conclusion",
+    "text": "Conclusion\nVisualizing GDP makes abstract numbers and trends more tangible. Combining simple wrangling with clear plotting, you can track trends, identify shocks, and compare economies."
+  },
+  {
+    "objectID": "gdp_blog.html#step-1-importing-and-loading-the-data",
+    "href": "gdp_blog.html#step-1-importing-and-loading-the-data",
+    "title": "",
+    "section": "Step 1: Importing and Loading the Data",
+    "text": "Step 1: Importing and Loading the Data\nWe’ll use Python’s standard data stack: pandas for wrangling and matplotlib for visualization. Suppose you’ve downloaded a CSV file called gdp_data.csv from the World Bank or IMF. This file contains GDP data for multiple countries over several decades. You may have to use different functions to load data from other formats like Excel or JSON.\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load dataset\ndf = pd.read_csv(\"gdp_data.csv\")\n\n# Preview of the data\nprint(df.head())"
+  },
+  {
+    "objectID": "gdp_blog.html#sources",
+    "href": "gdp_blog.html#sources",
+    "title": "",
+    "section": "Sources",
+    "text": "Sources\n\nWorld Bank GDP Data: https://data.worldbank.org/indicator/NY.GDP.MKTP.KD"
+  }
+]

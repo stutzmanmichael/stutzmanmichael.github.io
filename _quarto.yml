@@ -1,0 +1,21 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Michael Stutzman - Visualization Blog"
+  description: "A showcase of my data science projects and learning journey"
+  
+  navbar:
+    background: primary
+    left:
+      - text: ""
+        href: index.md
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    code-tools: true
+    css: styles.css
