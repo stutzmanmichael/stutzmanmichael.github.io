@@ -3,14 +3,16 @@ project:
   output-dir: docs
 
 website:
-  title: "Michael Stutzman - Visualization Blog"
+  title: "Michael Stutzman's Data Science Blogs"
   description: "A showcase of my data science projects and learning journey"
   
   navbar:
     background: primary
     left:
-      - text: ""
+      - text: "Data EDA Blog"
         href: index.md
+      - text: "Data Acquisition"
+        href: data_acquisition.md
 
 format:
   html:

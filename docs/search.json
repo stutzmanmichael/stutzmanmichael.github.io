@@ -265,5 +265,173 @@
     "title": "",
     "section": "Sources",
     "text": "Sources\n\nWorld Bank GDP Data: https://data.worldbank.org/indicator/NY.GDP.MKTP.KD"
+  },
+  {
+    "objectID": "data_acquisition.html",
+    "href": "data_acquisition.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "data_acquisition.html#introduction",
+    "href": "data_acquisition.html#introduction",
+    "title": "",
+    "section": "1. Introduction",
+    "text": "1. Introduction\nThe Nobel Prize is one of the most prized awards in the world, it celebrates breakthroughs in various fields including Physics, Chemistry, Medicine, Literature, Peace, and Economic Sciences. The prize was first awarded in 1901 and has since recognized over 1000 individuals for their contributions to humanity. Each award can be given to up to three laureates in a given category. There is also a cash prize that accompanies the award, which has varied over time in actual value (adjusted for inflation).\nThis project utilizes publically available data from the Nobel Prize organization through the public API. The processes used in this project are applicable to other datasets and APIs."
+  },
+  {
+    "objectID": "data_acquisition.html#step-1-importing-and-loading-the-data",
+    "href": "data_acquisition.html#step-1-importing-and-loading-the-data",
+    "title": "",
+    "section": "Step 1: Importing and Loading the Data",
+    "text": "Step 1: Importing and Loading the Data"
+  },
+  {
+    "objectID": "data_acquisition.html#step-2-select-relevant-columns",
+    "href": "data_acquisition.html#step-2-select-relevant-columns",
+    "title": "",
+    "section": "Step 2: Select Relevant Columns",
+    "text": "Step 2: Select Relevant Columns\n#ADD CODE"
+  },
+  {
+    "objectID": "data_acquisition.html#step-3-wrangle-the-data",
+    "href": "data_acquisition.html#step-3-wrangle-the-data",
+    "title": "",
+    "section": "Step 3: Wrangle the Data",
+    "text": "Step 3: Wrangle the Data\n# ADD CODE\n#ADD CODE"
+  },
+  {
+    "objectID": "data_acquisition.html#step-4-visualize-trends",
+    "href": "data_acquisition.html#step-4-visualize-trends",
+    "title": "",
+    "section": "Step 4: Visualize Trends",
+    "text": "Step 4: Visualize Trends\n#ADD CODE"
+  },
+  {
+    "objectID": "data_acquisition.html#step-5-interpret-results",
+    "href": "data_acquisition.html#step-5-interpret-results",
+    "title": "",
+    "section": "Step 5: Interpret Results",
+    "text": "Step 5: Interpret Results"
+  },
+  {
+    "objectID": "data_acquisition.html#conclusion",
+    "href": "data_acquisition.html#conclusion",
+    "title": "",
+    "section": "Conclusion",
+    "text": "Conclusion"
+  },
+  {
+    "objectID": "data_acquisition.html#call-to-action",
+    "href": "data_acquisition.html#call-to-action",
+    "title": "",
+    "section": "Call to Action",
+    "text": "Call to Action"
+  },
+  {
+    "objectID": "data_acquisition.html#sources",
+    "href": "data_acquisition.html#sources",
+    "title": "",
+    "section": "Sources",
+    "text": "Sources\n\nhttps://www.nobelprize.org/"
+  },
+  {
+    "objectID": "notebook_acquisition_code.html",
+    "href": "notebook_acquisition_code.html",
+    "title": "",
+    "section": "",
+    "text": "CodeShow All CodeHide All Code\n\n\n\n\n\n\nCode\nimport requests\nimport pandas as pd\n\n# Base API URL\nbase_url = \"https://api.nobelprize.org/2.1/nobelPrizes\"\n\n\n\n\nCode\n# Parameters for the API request\nparams = {\n    \"nobelPrizeYear\": 1901, # starting year (starts 1901)\n    \"yearTo\": 2025,        # up to current year (2025)\n    \"sort\": \"asc\",\n    \"format\": \"json\",\n    \"limit\": 1026 # can adjust as needed (Max as of 2025 is 1026)\n}\n\n\n\n\nCode\n# Make the request\nresponse = requests.get(base_url, params=params)\ndata = response.json()\n\n\n\n\nCode\n# Flatten the structure for DataFrame use\nrecords = []\nfor prize in data[\"nobelPrizes\"]:\n    year = prize.get(\"awardYear\")\n    category = prize[\"category\"][\"en\"]\n    prize_amount = prize.get(\"prizeAmount\")\n    prize_amount_adj = prize.get(\"prizeAmountAdjusted\")\n    date_awarded = prize.get(\"dateAwarded\")\n    top_motivation = prize.get(\"topMotivation\", {}).get(\"en\", None)\n    \n    for laureate in prize.get(\"laureates\", []):\n        laureate_name = laureate.get(\"knownName\", {}).get(\"en\")\n        motivation = laureate.get(\"motivation\", {}).get(\"en\", None)\n        portion = laureate.get(\"portion\", None)\n        org = laureate.get(\"organization\", {}).get(\"orgName\", {}).get(\"en\", None)\n\n        records.append({\n            \"year\": year,\n            \"category\": category,\n            \"laureate\": laureate_name,\n            \"organization\": org,\n            \"motivation\": motivation or top_motivation,\n            \"portion\": portion,\n            \"prize_amount\": prize_amount,\n            \"prize_amount_adjusted\": prize_amount_adj,\n            \"date_awarded\": date_awarded\n        })\n\n\n\n\nCode\n# Create DataFrame and inspect\ndf = pd.DataFrame(records)\nprint(df.head())\nprint(df.shape)\nprint(df.tail())\n\n# Optional: save to CSV\ndf.to_csv(\"nobel_prizes_original.csv\", index=False)\n\n\n   year    category                laureate organization  \\\n0  1901   Chemistry  Jacobus H. van 't Hoff         None   \n1  1901  Literature         Sully Prudhomme         None   \n2  1901       Peace            Henry Dunant         None   \n3  1901       Peace          Frédéric Passy         None   \n4  1901     Physics  Wilhelm Conrad Röntgen         None   \n\n                                          motivation portion  prize_amount  \\\n0  in recognition of the extraordinary services h...       1        150782   \n1  in special recognition of his poetic compositi...       1        150782   \n2  for his humanitarian efforts to help wounded s...     1/2        150782   \n3  for his lifelong work for international peace ...     1/2        150782   \n4  in recognition of the extraordinary services h...       1        150782   \n\n   prize_amount_adjusted date_awarded  \n0               10833458   1901-11-12  \n1               10833458   1901-11-14  \n2               10833458   1901-12-10  \n3               10833458   1901-12-10  \n4               10833458   1901-11-12  \n(1026, 9)\n      year                category           laureate organization  \\\n1021  2025                 Physics  Michel H. Devoret         None   \n1022  2025                 Physics   John M. Martinis         None   \n1023  2025  Physiology or Medicine    Mary E. Brunkow         None   \n1024  2025  Physiology or Medicine      Fred Ramsdell         None   \n1025  2025  Physiology or Medicine   Shimon Sakaguchi         None   \n\n                                             motivation portion  prize_amount  \\\n1021  for the discovery of macroscopic quantum mecha...     1/3      11000000   \n1022  for the discovery of macroscopic quantum mecha...     1/3      11000000   \n1023  for their discoveries concerning peripheral im...     1/3      11000000   \n1024  for their discoveries concerning peripheral im...     1/3      11000000   \n1025  for their discoveries concerning peripheral im...     1/3      11000000   \n\n      prize_amount_adjusted date_awarded  \n1021               11000000   2025-10-07  \n1022               11000000   2025-10-07  \n1023               11000000   2025-10-06  \n1024               11000000   2025-10-06  \n1025               11000000   2025-10-06  \n\n\n\n\nCode\n# Perform transformations to make unique\n\n# Transforming date_awarded to datetime\ndf['date_awarded'] = pd.to_datetime(df['date_awarded'])\n\n# Create dummy variables for the 'category' column\ncategory_dummies = pd.get_dummies(df['category'], prefix='category')\n\n# Combine with original dataframe\ndf_with_dummies = pd.concat([df, category_dummies], axis=1)\n\n# The following code can be used to drop the original 'category' column to avoid multicollinearity\n# df_with_dummies = df_with_dummies.drop(columns=['category'])\n\nprint(df_with_dummies.head())\n\n\n   year    category                laureate organization  \\\n0  1901   Chemistry  Jacobus H. van 't Hoff         None   \n1  1901  Literature         Sully Prudhomme         None   \n2  1901       Peace            Henry Dunant         None   \n3  1901       Peace          Frédéric Passy         None   \n4  1901     Physics  Wilhelm Conrad Röntgen         None   \n\n                                          motivation portion  prize_amount  \\\n0  in recognition of the extraordinary services h...       1        150782   \n1  in special recognition of his poetic compositi...       1        150782   \n2  for his humanitarian efforts to help wounded s...     1/2        150782   \n3  for his lifelong work for international peace ...     1/2        150782   \n4  in recognition of the extraordinary services h...       1        150782   \n\n   prize_amount_adjusted date_awarded  category_Chemistry  \\\n0               10833458   1901-11-12                True   \n1               10833458   1901-11-14               False   \n2               10833458   1901-12-10               False   \n3               10833458   1901-12-10               False   \n4               10833458   1901-11-12               False   \n\n   category_Economic Sciences  category_Literature  category_Peace  \\\n0                       False                False           False   \n1                       False                 True           False   \n2                       False                False            True   \n3                       False                False            True   \n4                       False                False           False   \n\n   category_Physics  category_Physiology or Medicine  \n0             False                            False  \n1             False                            False  \n2             False                            False  \n3             False                            False  \n4              True                            False  \n\n\n\n\nCode\n# further transformations to help avoid bimodal distributions in analysis\n\n# Check all unique portion values, these would affect the prize amount because it is split among laureates\n#print(df['portion'].unique())\n# ['1' '1/2' '1/4' '1/3']\n\n# Create dummy variables for the portion column\nportion_dummies = pd.get_dummies(df['portion'], prefix='portion')\n\n# Merge into the main DataFrame\ndf_with_dummies = pd.concat([df, portion_dummies], axis=1)\n\nprint(df_with_dummies.head())\n\n\n\n   year    category                laureate organization  \\\n0  1901   Chemistry  Jacobus H. van 't Hoff         None   \n1  1901  Literature         Sully Prudhomme         None   \n2  1901       Peace            Henry Dunant         None   \n3  1901       Peace          Frédéric Passy         None   \n4  1901     Physics  Wilhelm Conrad Röntgen         None   \n\n                                          motivation portion  prize_amount  \\\n0  in recognition of the extraordinary services h...       1        150782   \n1  in special recognition of his poetic compositi...       1        150782   \n2  for his humanitarian efforts to help wounded s...     1/2        150782   \n3  for his lifelong work for international peace ...     1/2        150782   \n4  in recognition of the extraordinary services h...       1        150782   \n\n   prize_amount_adjusted date_awarded  portion_1  portion_1/2  portion_1/3  \\\n0               10833458   1901-11-12       True        False        False   \n1               10833458   1901-11-14       True        False        False   \n2               10833458   1901-12-10      False         True        False   \n3               10833458   1901-12-10      False         True        False   \n4               10833458   1901-11-12       True        False        False   \n\n   portion_1/4  \n0        False  \n1        False  \n2        False  \n3        False  \n4        False  \n\n\n\n\nCode\n# Combine dummies with the main DataFrame\ndf_ready = pd.concat([df, category_dummies, portion_dummies], axis=1)\n\nprint(df_ready.head())\n\n\n   year    category                laureate organization  \\\n0  1901   Chemistry  Jacobus H. van 't Hoff         None   \n1  1901  Literature         Sully Prudhomme         None   \n2  1901       Peace            Henry Dunant         None   \n3  1901       Peace          Frédéric Passy         None   \n4  1901     Physics  Wilhelm Conrad Röntgen         None   \n\n                                          motivation portion  prize_amount  \\\n0  in recognition of the extraordinary services h...       1        150782   \n1  in special recognition of his poetic compositi...       1        150782   \n2  for his humanitarian efforts to help wounded s...     1/2        150782   \n3  for his lifelong work for international peace ...     1/2        150782   \n4  in recognition of the extraordinary services h...       1        150782   \n\n   prize_amount_adjusted date_awarded  category_Chemistry  \\\n0               10833458   1901-11-12                True   \n1               10833458   1901-11-14               False   \n2               10833458   1901-12-10               False   \n3               10833458   1901-12-10               False   \n4               10833458   1901-11-12               False   \n\n   category_Economic Sciences  category_Literature  category_Peace  \\\n0                       False                False           False   \n1                       False                 True           False   \n2                       False                False            True   \n3                       False                False            True   \n4                       False                False           False   \n\n   category_Physics  category_Physiology or Medicine  portion_1  portion_1/2  \\\n0             False                            False       True        False   \n1             False                            False       True        False   \n2             False                            False      False         True   \n3             False                            False      False         True   \n4              True                            False       True        False   \n\n   portion_1/3  portion_1/4  \n0        False        False  \n1        False        False  \n2        False        False  \n3        False        False  \n4        False        False  \n\n\n\n\nCode\ndf_ready.to_csv(\"nobel_prizes_novel.csv\", index=False)"
+  },
+  {
+    "objectID": "data_acquisition.html#data-acquisition-using-python",
+    "href": "data_acquisition.html#data-acquisition-using-python",
+    "title": "",
+    "section": "Data Acquisition using Python",
+    "text": "Data Acquisition using Python"
+  },
+  {
+    "objectID": "data_acquisition.html#step-2-motivating-question",
+    "href": "data_acquisition.html#step-2-motivating-question",
+    "title": "",
+    "section": "Step 2: Motivating Question",
+    "text": "Step 2: Motivating Question"
+  },
+  {
+    "objectID": "data_acquisition.html#step-3-information-on-the-dataset",
+    "href": "data_acquisition.html#step-3-information-on-the-dataset",
+    "title": "",
+    "section": "Step 3: Information on the Dataset",
+    "text": "Step 3: Information on the Dataset\n# ADD CODE"
+  },
+  {
+    "objectID": "data_acquisition.html#step-4-summary-of-data-acquisition-process",
+    "href": "data_acquisition.html#step-4-summary-of-data-acquisition-process",
+    "title": "",
+    "section": "Step 4: Summary of Data Acquisition Process",
+    "text": "Step 4: Summary of Data Acquisition Process"
+  },
+  {
+    "objectID": "data_acquisition.html#step-5-eda-highlights",
+    "href": "data_acquisition.html#step-5-eda-highlights",
+    "title": "",
+    "section": "Step 5: EDA Highlights",
+    "text": "Step 5: EDA Highlights"
+  },
+  {
+    "objectID": "data_acquisition.html#step-6-further-info",
+    "href": "data_acquisition.html#step-6-further-info",
+    "title": "",
+    "section": "Step 6: Further Info",
+    "text": "Step 6: Further Info"
+  },
+  {
+    "objectID": "data_acquisition.html#step-7-link-to-github-repository",
+    "href": "data_acquisition.html#step-7-link-to-github-repository",
+    "title": "",
+    "section": "Step 7: Link to Github Repository",
+    "text": "Step 7: Link to Github Repository"
+  },
+  {
+    "objectID": "data_acquisition.html#motivating-questions",
+    "href": "data_acquisition.html#motivating-questions",
+    "title": "",
+    "section": "2: Motivating Questions",
+    "text": "2: Motivating Questions\n\nHow has the value of the prize changed over time?\nWhich categories have shown the greatest changes in award patterns?\nHave portions for the prize changed over time? Over different categories?"
+  },
+  {
+    "objectID": "data_acquisition.html#information-on-the-dataset",
+    "href": "data_acquisition.html#information-on-the-dataset",
+    "title": "",
+    "section": "3: Information on the Dataset",
+    "text": "3: Information on the Dataset\nThe dataset used is publically available through the Nobel Prize organization via their public API. The API provides access to data on laureates, prizes, and other related information. The data is returned in JSON format, which is a common format for web APIs. It is in good practice to not overwhelm public APIs with too many requests in a short period of time, so we will be using caching to store the data locally after the first request.\nRequests can also be limited by only pulling data from certain years, or drawing a certain number of overall results. For this project, we will be pulling all available data. All code provided inlcudes citation of the API’s official endpoint and documentation link. (https://api.nobelprize.org/2.1/nobelPrizes)"
+  },
+  {
+    "objectID": "data_acquisition.html#summary-of-data-acquisition-process",
+    "href": "data_acquisition.html#summary-of-data-acquisition-process",
+    "title": "",
+    "section": "4: Summary of Data Acquisition Process",
+    "text": "4: Summary of Data Acquisition Process\nThe data was collected using python’s ‘requests’ library and cleaned and sorted using ‘pandas’.\nThe following code snippet shows how to make a request to the Nobel Prize API and load the data into a pandas DataFrame for further analysis:\n# Base API URL\nbase_url = \"https://api.nobelprize.org/2.1/nobelPrizes\"\n\n# Parameters for the API request\nparams = {\n    \"nobelPrizeYear\": 1901, # starting year (starts 1901)\n    \"yearTo\": 2025,        # up to current year (2025)\n    \"sort\": \"asc\",\n    \"format\": \"json\",\n    \"limit\": 1026 # can adjust as needed (Max as of 2025 is 1026)\n}\n\n# Make the request\nresponse = requests.get(base_url, params=params)\ndata = response.json()\n\n# Extra steps here sorting the data and putting it in a desirable format.\n\n# Save the data to a pandas DataFrame and CSV\ndf = pd.DataFrame(records)\ndf.to_csv(\"nobel_prizes_original.csv\", index=False)\nThe steps in the process are accessing the API, looping through the JSON records and extracting relevant details, storing the data in a pandas DataFrame, and finally saving the cleaned data to a CSV file for future use. There are additional steps between storing the data and saving it to a CSV. These include sorting the data and putting it in a desirable format."
+  },
+  {
+    "objectID": "data_acquisition.html#eda-highlights",
+    "href": "data_acquisition.html#eda-highlights",
+    "title": "",
+    "section": "5: EDA Highlights",
+    "text": "5: EDA Highlights\nUsing matplotlib and seaborn, we can visualize some of the trends in the data to help us understand how the Nobel Prize has evolved over time. The following graphs higlight some of the interesting trends found in the data centered around the motivating questions.\n\nThe portion variable in our data indicates how many people were on the team that won, we can use 1/n to know how many people are in each group. Because a single award can be given to up to three people or an organization. The entries with 1/4 proportion are organizations that won the prize.\nFrom the plot we know that nearly all of literature prizes are given to single individuals, while the sciences and peace prizes are more likely to be shared among multiple laureates or organizations. Physics have the highest proportion of prizes given to organizations, while Medicine and Physiology have the highest rate of 3-person groups for the prize. It can be fairly intuitive why literature prizes are almost exclusively given to individuals, while other categories may favor group work. It is surprising to me that chemistry highly favors small-groups and individuals rather than organizations.\n\nThis plot shows the rolling average of the number of laureates per prize over time. We can see that in general, the number of laureates per prize has increased over time, indicating a trend towards more collaborative work being recognized. The Peace prize shows the most significant increase in the number of laureates per prize, which may reflect the complex nature of peace efforts that often involve multiple stakeholders. The other categories show a more modest increase, but the overall trend is clear: more people are being recognized for their contributions to these fields.\n\nThis plot shows the number of years without a prize being awarded in each category. The category for economic sciences only started in 1969, 68 years after all of the other categories had their first prizes awarded. So in reality, peace has the highest number of years without a prize awarded."
+  },
+  {
+    "objectID": "data_acquisition.html#further-info",
+    "href": "data_acquisition.html#further-info",
+    "title": "",
+    "section": "6: Further Info",
+    "text": "6: Further Info\n\nThe following links provide additional information on the dataset and tools used in this project:\nNobel Prize API Documentation: https://api.nobelprize.org/2.1/nobelPrizes\nNobel Prize Dataset (Official Portal): https://www.nobelprize.org/\nPandas Documentation: https://pandas.pydata.org/docs/\nMatplotlib Documentation: https://matplotlib.org/stable/index.html\nSeaborn Documentation: https://seaborn.pydata.org/\nCreative Commons CC0 License Info: https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+    "objectID": "data_acquisition.html#link-to-github-repository",
+    "href": "data_acquisition.html#link-to-github-repository",
+    "title": "",
+    "section": "7: Link to Github Repository",
+    "text": "7: Link to Github Repository\nhttps://github.com/stutzmanmichael/acquisition_blog"
   }
 ]
