@@ -58,6 +58,8 @@ df.to_csv("nobel_prizes_original.csv", index=False)
 ```
 The steps in the process are accessing the API, looping through the JSON records and extracting relevant details, storing the data in a pandas DataFrame, and finally saving the cleaned data to a CSV file for future use. There are additional steps between storing the data and saving it to a CSV. These include sorting the data and putting it in a desirable format.
 
+Additionally, I made dummy variables for the categories and portions. This was done to allow for multiple linear regression if desired. All of the original variables were kept in the final dataset as well. This made the dataset more versatile, allowing for string analysis on the 'motivation' variable.
+
 ---
 
 ## 5: EDA Highlights
