@@ -198,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="information-on-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="information-on-the-dataset">3: Information on the Dataset</h2>
 <p>The dataset used is publically available through the Nobel Prize organization via their public API. The API provides access to data on laureates, prizes, and other related information. The data is returned in JSON format, which is a common format for web APIs. It is in good practice to not overwhelm public APIs with too many requests in a short period of time, so we will be using caching to store the data locally after the first request.</p>
-<p>Requests can also be limited by only pulling data from certain years, or drawing a certain number of overall results. For this project, we will be pulling all available data. All code provided inlcudes citation of the API’s official endpoint and documentation link. (https://api.nobelprize.org/2.1/nobelPrizes)</p>
+<p>Requests can also be limited by only pulling data from certain years, or drawing a certain number of overall results. For this project, we will be pulling all available data. All code provided inlcudes citation of the API’s official endpoint and documentation link. <a href="https://api.nobelprize.org/2.1/nobelPrizes">Nobel Prize API Documentation</a></p>
 <hr>
 </section>
 <section id="summary-of-data-acquisition-process" class="level2">
@@ -227,11 +227,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(records)</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"nobel_prizes_original.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The steps in the process are accessing the API, looping through the JSON records and extracting relevant details, storing the data in a pandas DataFrame, and finally saving the cleaned data to a CSV file for future use. There are additional steps between storing the data and saving it to a CSV. These include sorting the data and putting it in a desirable format.</p>
+<p>Additionally, I made dummy variables for the categories and portions. This was done to allow for multiple linear regression if desired. All of the original variables were kept in the final dataset as well. This made the dataset more versatile, allowing for string analysis on the ‘motivation’ variable.</p>
 <hr>
 </section>
 <section id="eda-highlights" class="level2">
 <h2 class="anchored" data-anchor-id="eda-highlights">5: EDA Highlights</h2>
-<p>Using matplotlib and seaborn, we can visualize some of the trends in the data to help us understand how the Nobel Prize has evolved over time. The following graphs higlight some of the interesting trends found in the data centered around the motivating questions.</p>
+<p>Using matplotlib and seaborn, we can visualize some of the trends in the data to help us understand how the Nobel Prize has evolved over time. The following graphs highlight some of the interesting trends found in the data centered around the motivating questions.</p>
 <p><img src="portion_dist_by_cat.png" class="img-fluid"></p>
 <p>The portion variable in our data indicates how many people were on the team that won, we can use 1/n to know how many people are in each group. Because a single award can be given to up to three people or an organization. The entries with 1/4 proportion are organizations that won the prize.</p>
 <p>From the plot we know that nearly all of literature prizes are given to single individuals, while the sciences and peace prizes are more likely to be shared among multiple laureates or organizations. Physics have the highest proportion of prizes given to organizations, while Medicine and Physiology have the highest rate of 3-person groups for the prize. It can be fairly intuitive why literature prizes are almost exclusively given to individuals, while other categories may favor group work. It is surprising to me that chemistry highly favors small-groups and individuals rather than organizations.</p>
@@ -244,22 +245,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="further-info">6: Further Info</h2>
 <section id="the-following-links-provide-additional-information-on-the-dataset-and-tools-used-in-this-project" class="level3">
 <h3 class="anchored" data-anchor-id="the-following-links-provide-additional-information-on-the-dataset-and-tools-used-in-this-project">The following links provide additional information on the dataset and tools used in this project:</h3>
-<p>Nobel Prize API Documentation: https://api.nobelprize.org/2.1/nobelPrizes</p>
-<p>Nobel Prize Dataset (Official Portal): https://www.nobelprize.org/</p>
-<p>Pandas Documentation: https://pandas.pydata.org/docs/</p>
-<p>Matplotlib Documentation: https://matplotlib.org/stable/index.html</p>
-<p>Seaborn Documentation: https://seaborn.pydata.org/</p>
-<p>Creative Commons CC0 License Info: https://creativecommons.org/publicdomain/zero/1.0/</p>
+<ul>
+<li><a href="https://api.nobelprize.org/2.1/nobelPrizes">Nobel Prize API Documentation</a><br>
+</li>
+<li><a href="https://www.nobelprize.org/">Nobel Prize Dataset (Official Portal)</a><br>
+</li>
+<li><a href="https://pandas.pydata.org/docs/">Pandas Documentation</a><br>
+</li>
+<li><a href="https://matplotlib.org/stable/index.html">Matplotlib Documentation</a><br>
+</li>
+<li><a href="https://seaborn.pydata.org/">Seaborn Documentation</a><br>
+</li>
+<li><a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0 License Info</a></li>
+</ul>
 </section>
 </section>
 <section id="link-to-github-repository" class="level2">
 <h2 class="anchored" data-anchor-id="link-to-github-repository">7: Link to Github Repository</h2>
-<p>https://github.com/stutzmanmichael/acquisition_blog</p>
+<p><a href="https://github.com/stutzmanmichael/acquisition_blog">GitHub Repository: acquisition_blog</a></p>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
 <ul>
-<li>https://www.nobelprize.org/</li>
+<li><a href="https://www.nobelprize.org/">Nobel Prize Official Site</a></li>
 </ul>
 
 
@@ -745,7 +753,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>The dataset used is publically available through the Nobel Prize organization via their public API. The API provides access to data on laureates, prizes, and other related information. The data is returned in JSON format, which is a common format for web APIs. It is in good practice to not overwhelm public APIs with too many requests in a short period of time, so we will be using caching to store the data locally after the first request.</span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>Requests can also be limited by only pulling data from certain years, or drawing a certain number of overall results. For this project, we will be pulling all available data. All code provided inlcudes citation of the API's official endpoint and documentation link. (https://api.nobelprize.org/2.1/nobelPrizes)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>Requests can also be limited by only pulling data from certain years, or drawing a certain number of overall results. For this project, we will be pulling all available data. All code provided inlcudes citation of the API's official endpoint and documentation link. <span class="co">[</span><span class="ot">Nobel Prize API Documentation</span><span class="co">](https://api.nobelprize.org/2.1/nobelPrizes)</span></span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
@@ -780,54 +788,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>The steps in the process are accessing the API, looping through the JSON records and extracting relevant details, storing the data in a pandas DataFrame, and finally saving the cleaned data to a CSV file for future use. There are additional steps between storing the data and saving it to a CSV. These include sorting the data and putting it in a desirable format.</span>
 <span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>Additionally, I made dummy variables for the categories and portions. This was done to allow for multiple linear regression if desired. All of the original variables were kept in the final dataset as well. This made the dataset more versatile, allowing for string analysis on the 'motivation' variable.</span>
 <span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5: EDA Highlights</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>Using matplotlib and seaborn, we can visualize some of the trends in the data to help us understand how the Nobel Prize has evolved over time. The following graphs higlight some of the interesting trends found in the data centered around the motivating questions.</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5: EDA Highlights</span></span>
 <span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="al">![](portion_dist_by_cat.png)</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>Using matplotlib and seaborn, we can visualize some of the trends in the data to help us understand how the Nobel Prize has evolved over time. The following graphs highlight some of the interesting trends found in the data centered around the motivating questions.</span>
 <span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>The portion variable in our data indicates how many people were on the team that won, we can use 1/n to know how many people are in each group. Because a single award can be given to up to three people or an organization. The entries with 1/4 proportion are organizations that won the prize. </span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="al">![](portion_dist_by_cat.png)</span></span>
 <span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>From the plot we know that nearly all of literature prizes are given to single individuals, while the sciences and peace prizes are more likely to be shared among multiple laureates or organizations. Physics have the highest proportion of prizes given to organizations, while Medicine and Physiology have the highest rate of 3-person groups for the prize. It can be fairly intuitive why literature prizes are almost exclusively given to individuals, while other categories may favor group work. It is surprising to me that chemistry highly favors small-groups and individuals rather than organizations.</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>The portion variable in our data indicates how many people were on the team that won, we can use 1/n to know how many people are in each group. Because a single award can be given to up to three people or an organization. The entries with 1/4 proportion are organizations that won the prize. </span>
 <span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="al">![](rolling_avg_portion.png)</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>From the plot we know that nearly all of literature prizes are given to single individuals, while the sciences and peace prizes are more likely to be shared among multiple laureates or organizations. Physics have the highest proportion of prizes given to organizations, while Medicine and Physiology have the highest rate of 3-person groups for the prize. It can be fairly intuitive why literature prizes are almost exclusively given to individuals, while other categories may favor group work. It is surprising to me that chemistry highly favors small-groups and individuals rather than organizations.</span>
 <span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>This plot shows the rolling average of the number of laureates per prize over time. We can see that in general, the number of laureates per prize has increased over time, indicating a trend towards more collaborative work being recognized. The Peace prize shows the most significant increase in the number of laureates per prize, which may reflect the complex nature of peace efforts that often involve multiple stakeholders. The other categories show a more modest increase, but the overall trend is clear: more people are being recognized for their contributions to these fields.</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="al">![](rolling_avg_portion.png)</span></span>
 <span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="al">![](years_wo_prize.png)</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>This plot shows the rolling average of the number of laureates per prize over time. We can see that in general, the number of laureates per prize has increased over time, indicating a trend towards more collaborative work being recognized. The Peace prize shows the most significant increase in the number of laureates per prize, which may reflect the complex nature of peace efforts that often involve multiple stakeholders. The other categories show a more modest increase, but the overall trend is clear: more people are being recognized for their contributions to these fields.</span>
 <span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>This plot shows the number of years without a prize being awarded in each category. The category for economic sciences only started in 1969, 68 years after all of the other categories had their first prizes awarded. So in reality, peace has the highest number of years without a prize awarded. </span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="al">![](years_wo_prize.png)</span></span>
 <span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6: Further Info</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>This plot shows the number of years without a prize being awarded in each category. The category for economic sciences only started in 1969, 68 years after all of the other categories had their first prizes awarded. So in reality, peace has the highest number of years without a prize awarded. </span>
 <span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### The following links provide additional information on the dataset and tools used in this project:</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6: Further Info</span></span>
 <span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>Nobel Prize API Documentation: </span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>https://api.nobelprize.org/2.1/nobelPrizes</span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>Nobel Prize Dataset (Official Portal): </span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>https://www.nobelprize.org/</span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>Pandas Documentation: </span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>https://pandas.pydata.org/docs/</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="fu">### The following links provide additional information on the dataset and tools used in this project:</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Nobel Prize API Documentation</span><span class="co">](https://api.nobelprize.org/2.1/nobelPrizes)</span>  </span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Nobel Prize Dataset (Official Portal)</span><span class="co">](https://www.nobelprize.org/)</span>  </span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Pandas Documentation</span><span class="co">](https://pandas.pydata.org/docs/)</span>  </span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Matplotlib Documentation</span><span class="co">](https://matplotlib.org/stable/index.html)</span>  </span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Seaborn Documentation</span><span class="co">](https://seaborn.pydata.org/)</span>  </span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Creative Commons CC0 License Info</span><span class="co">](https://creativecommons.org/publicdomain/zero/1.0/)</span> </span>
 <span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>Matplotlib Documentation: </span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>https://matplotlib.org/stable/index.html</span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>Seaborn Documentation: </span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>https://seaborn.pydata.org/</span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>Creative Commons CC0 License Info: </span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>https://creativecommons.org/publicdomain/zero/1.0/</span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7: Link to Github Repository</span></span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>https://github.com/stutzmanmichael/acquisition_blog</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sources</span></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>https://www.nobelprize.org/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7: Link to Github Repository</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">GitHub Repository: acquisition_blog</span><span class="co">](https://github.com/stutzmanmichael/acquisition_blog)</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sources</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Nobel Prize Official Site</span><span class="co">](https://www.nobelprize.org/)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

@@ -23,7 +23,7 @@ This project utilizes publically available data from the Nobel Prize organizatio
 
 The dataset used is publically available through the Nobel Prize organization via their public API. The API provides access to data on laureates, prizes, and other related information. The data is returned in JSON format, which is a common format for web APIs. It is in good practice to not overwhelm public APIs with too many requests in a short period of time, so we will be using caching to store the data locally after the first request.
 
-Requests can also be limited by only pulling data from certain years, or drawing a certain number of overall results. For this project, we will be pulling all available data. All code provided inlcudes citation of the API's official endpoint and documentation link. (https://api.nobelprize.org/2.1/nobelPrizes)
+Requests can also be limited by only pulling data from certain years, or drawing a certain number of overall results. For this project, we will be pulling all available data. All code provided inlcudes citation of the API's official endpoint and documentation link. [Nobel Prize API Documentation](https://api.nobelprize.org/2.1/nobelPrizes)
 
 ---
 
@@ -84,27 +84,16 @@ This plot shows the number of years without a prize being awarded in each catego
 
 ### The following links provide additional information on the dataset and tools used in this project:
 
-Nobel Prize API Documentation: 
-https://api.nobelprize.org/2.1/nobelPrizes
-
-Nobel Prize Dataset (Official Portal): 
-https://www.nobelprize.org/
-
-Pandas Documentation: 
-https://pandas.pydata.org/docs/
-
-Matplotlib Documentation: 
-https://matplotlib.org/stable/index.html
-
-Seaborn Documentation: 
-https://seaborn.pydata.org/
-
-Creative Commons CC0 License Info: 
-https://creativecommons.org/publicdomain/zero/1.0/
+- [Nobel Prize API Documentation](https://api.nobelprize.org/2.1/nobelPrizes)  
+- [Nobel Prize Dataset (Official Portal)](https://www.nobelprize.org/)  
+- [Pandas Documentation](https://pandas.pydata.org/docs/)  
+- [Matplotlib Documentation](https://matplotlib.org/stable/index.html)  
+- [Seaborn Documentation](https://seaborn.pydata.org/)  
+- [Creative Commons CC0 License Info](https://creativecommons.org/publicdomain/zero/1.0/) 
 
 ## 7: Link to Github Repository
 
-https://github.com/stutzmanmichael/acquisition_blog
+[GitHub Repository: acquisition_blog](https://github.com/stutzmanmichael/acquisition_blog)
 
 ## Sources
-- https://www.nobelprize.org/
+- [Nobel Prize Official Site](https://www.nobelprize.org/)
